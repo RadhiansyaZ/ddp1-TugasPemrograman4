@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<!------------------------bootstrap css----------------------------->
+	<link rel="stylesheet" href="../static/css/lib/bootstrap.css">
+	<title>BudayaKB Lite</title>
+</head>
+<body>
+	 {% include 'includes/_navbar.html' %}
+	 <div class="container">
+		 <br>
+			<h2>Impor Budaya</h2>
+
+			<form method="POST" action="" enctype = "multipart/form-data">
+				<p>Pilih file CSV berisi data BudayaKB</p>
+				<input type="file" accept="text/csv" name=file required>
+				<input type=submit value="Import Data">
+			</form>
+			
+		
+			{% if result is defined and result >0: %}
+			<h3>{{ result }} data budaya telah terimpor dari file "{{ fname }}"</h3>
+			{% endif %}
+	 </div>
+	
+</body>
+</html>

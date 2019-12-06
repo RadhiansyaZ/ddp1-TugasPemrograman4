@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../static/css/lib/bootstrap.css">
+    <title>BudayaKB Lite</title>
+</head>
+<body>
+    {% include 'includes/_navbar.html' %}
+    <div class="container">
+            <br>
+            <h2>Ubah Budaya</h2>
+            <p>Masukkan data budaya yang akan diubah ke dalam sistem</p><br>
+            <form action="" method="POST">
+                <div class="form-group row">
+                    <div class="col">
+                        <p>Nama: </p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="nama" id="" required>
+                     </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+                </div>
+                <div class="form-group row">
+                        <div class="col">
+                            <p>Tipe: </p>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="tipe" id="" required>
+                         </div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                </div>
+                <div class="form-group row">
+                        <div class="col">
+                            <p>Provinsi: </p>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="prov" id="" required>
+                          </div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                </div>
+                <div class="form-group row">
+                       <div class="col">
+                            <p>URL referensi: </p>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" name="url" id="" required>
+                         </div>
+                        <div class="col"></div>
+                        <div class="col"></div>
+                </div>
+                <div class="form-group row">
+                        <div class="col"></div>
+                        <div class="col-6">
+                            <div class="col"></div>
+                            <div class="col">
+                                <input type="submit" value="Ubah Data">
+                            </div>
+                        </div>
+                        <div class="col"></div>
+                </div>   
+            </form>
+    </div>
+    <div class="container-fluid">
+        {% if command is defined and command==True %}
+        <h4>Budaya {{name}} berhasil diubah</h4>
+        {% elif command==False %}
+        <h4>Budaya {{name}} tidak ditemukan</h4>
+        {%endif%}
+    </div>
+</body>
+</html>

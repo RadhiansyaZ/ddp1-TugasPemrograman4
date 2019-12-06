@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../../static/css/lib/bootstrap.css">
+    <link rel="stylesheet" href="../../static/css/style.css">
+    <title>BudayaKB Lite</title>
+</head>
+<body>
+    {% include 'includes/_navbar.html' %}
+    <div class="container">
+        <br>
+        <h2>Kriteria Pencarian</h2>
+            <div class="form-group row">
+                <form action="" method="POST">
+                    <select name="category" id="">
+                        <option value="name">Nama Budaya</option>
+                        <option value="type_">Tipe Budaya</option>
+                        <option value="origin">Asal Provinsi Budaya</option>
+                    </select>
+                    <input type="text" name="budaya" required>
+                    <input type="submit" value="Cari">
+                </form>
+            </div>
+    </div>
+
+    <div class="container-fluid">
+        {% if result is defined and result|length == 0 %}
+        <h5>Tidak ditemukan data budaya dengan kata kunci <i>{{ nama }}</i> pada kategori {{search_category}}</h5>
+        {% endif %}
+        {% if result is defined and result|length != 0 %}
+        <h5>Ditemukan {{result|length}} budaya dengan kata kunci : <i>{{ nama }}</i> pada kategori {{ search_category }}.</h5>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr align="center">
+                        <th scope="col">No</th>
+                        <th scope="col">Nama Budaya</th>
+                        <th scope="col">Tipe</th>
+                        <th scope="col">Asal</th>
+                        <th scope="col">URL referensi</th>
+                    </tr>
+                </thead>
+                
+                {% for item in result %}
+                <tr>
+                    <td scope="row" align=center> {{ loop.index }} </td>
+                    <td align="left"> {{ item.nama }} </td>
+                    <td align="left"> {{ item.tipe }} </td>
+                    <td align="left"> {{ item.prov }} </td>
+                    <td align="left"><a href={{ item.url }} target="_blank">{{ item.url }}</a></td>
+                </tr>
+                {% endfor %}
+            {% endif %}
+            </table>
+        </div>
+    </div>
+</body>
+</html>
