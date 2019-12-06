@@ -1,0 +1,6 @@
+testdir.py
+__pycache__/
+kb.csv
+dataSmall.csv
+dataBudaya.csv
+bootstrap-4.3.1-dist.zip
