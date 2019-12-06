@@ -1,1 +1,1 @@
-web: gunicorn app: budayaKB_controller
+web: gunicorn budayaKB_controller: app
