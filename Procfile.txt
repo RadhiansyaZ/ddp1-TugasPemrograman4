@@ -1,1 +1,0 @@
-web: gunicorn budayaKB_controller.py: tp4-radhi
