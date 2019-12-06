@@ -1,1 +1,1 @@
-web: gunicorn app: budayaKB_controller.py
+web: gunicorn budayaKB_controller.py: tp4-radhi
