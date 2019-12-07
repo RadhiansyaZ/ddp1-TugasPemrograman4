@@ -1,1 +1,1 @@
-web: gunicorn budayaKB_controller: app
+web: flask ; gunicorn budayaKB_controller: app
