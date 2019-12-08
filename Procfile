@@ -1,1 +1,1 @@
-web: flask ; gunicorn -b:$PORTbudayaKB_controller: app
+web: gunicorn -b:$PORT budayaKB_controller: app
