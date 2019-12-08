@@ -1,3 +1,17 @@
+#!/usr/bin/env python3
+"""
+
+TEMPLATE TP4 DDP1 Semester Gasal 2019/2020
+
+Author: 
+Ika Alfina (ika.alfina@cs.ui.ac.id)
+Evi Yulianti (evi.yulianti@cs.ui.ac.id)
+Meganingrum Arista Jiwanggi (meganingrum@cs.ui.ac.id)
+
+Last update: 26 November 2019
+
+Dengan perubahan oleh Radhiansya Zain Antriksa Putra (radhiansya.zain@ui.ac.id)
+"""
 from budayaKB_model import BudayaItem, BudayaCollection
 from flask import Flask, request, render_template,redirect
 #from wtforms import Form, validators, TextField
@@ -32,7 +46,7 @@ def importData():
 		databasefilename=f.filename
 		budayaData.importFromCSV(f.filename)
 		n_data = len(budayaData.koleksi)
-		budayaData.exportToCSV(databasefilename)
+		#budayaData.exportToCSV(databasefilename)
 		return render_template("imporBudaya.html", result=n_data, fname=f.filename)
 
 # Bagian ini adalah integrasi dari fitur Cari Nama, Cari Tipe, dan Cari Prov dengan nama fitur Cari Budaya
