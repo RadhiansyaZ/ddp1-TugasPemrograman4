@@ -146,9 +146,9 @@ class BudayaCollection(object):
 		return 0 otherwise, new data is not processed
 		"""
 
-		if aName not in self.koleksi:
-			newBudayaItem = BudayaItem(aName.strip(), aTipe.strip(), aProv.strip(), anURL.strip())
-			self.koleksi[aName] = newBudayaItem
+		if aName.title() not in self.koleksi:
+			newBudayaItem = BudayaItem(aName.title().strip(), aTipe.title().strip(), aProv.title().strip(), anURL.strip())
+			self.koleksi[aName.title()] = newBudayaItem
 			return 1
 		else:
 			return 0
@@ -162,8 +162,8 @@ class BudayaCollection(object):
 		return 0 if the data does not exist
 		"""
 
-		if aName in self.koleksi:
-			self.koleksi.pop(aName.strip())
+		if aName.title() in self.koleksi:
+			self.koleksi.pop(aName.title().strip())
 			return 1
 		else:
 			return 0
@@ -175,9 +175,9 @@ class BudayaCollection(object):
 		return 1 if the data tobe updated is in the collection and the update has been done
 		return 0 if the old data with the same key (name) does not exist
 		"""
-		if aName in self.koleksi:
-			newBudayaItem = BudayaItem(aName.strip(), aTipe.strip(), aProv.strip(), anURL.strip())
-			self.koleksi[aName] = newBudayaItem
+		if aName.title() in self.koleksi:
+			newBudayaItem = BudayaItem(aName.title().strip(), aTipe.title().strip(), aProv.title().strip(), anURL.strip())
+			self.koleksi[aName.title()] = newBudayaItem
 			return 1
 
 		else:
@@ -257,7 +257,6 @@ def main():
 		print()
 	else:
 		print("CariByNama: Tidak ada data dengan nama {}\n".format(keyCari))
-
 
 if __name__ == "__main__":
 	main()

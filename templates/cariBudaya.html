@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../static/css/lib/bootstrap.css">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
-    <title>BudayaKB Lite</title>
-</head>
-<body>
-    {% include 'includes/_navbar.html' %}
+{% extends 'includes/layout.html' %}
+
+{% block content %}
     <div class="container">
         <br>
         <h2>Kriteria Pencarian</h2>
@@ -20,8 +10,8 @@
                         <option value="name">Nama Budaya</option>
                         <option value="type_">Tipe Budaya</option>
                         <option value="origin">Asal Provinsi Budaya</option>
-                    </select>
-                    <input type="text" name="budaya" required>
+                     </select>
+                    <input type="text" name="budaya" placeholder="Rendang" required>
                     <input type="submit" value="Cari">
                 </form>
             </div>
@@ -58,5 +48,7 @@
             </table>
         </div>
     </div>
-</body>
-</html>
+<!-------load jQuery then Bootstrap bundle (Popper+Bootstrap)------->
+<script src="../static/js/lib/jquery-3.4.1.js"></script>
+<script src="../static/js/lib/bootstrap.bundle.js"></script>
+{% endblock %}

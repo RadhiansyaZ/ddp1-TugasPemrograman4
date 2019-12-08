@@ -1,56 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../static/css/lib/bootstrap.css">
-    <link rel="stylesheet" href="../../static/css/style.css">
-    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
-    <title>BudayaKB Lite</title>
-</head>
-<body>
-    {% include 'includes/_navbar.html' %}
-    <div class="container">
-            <br>
-            <h2>Kriteria Pencarian Statistik Budaya</h2>
-            <div class="form-group row">
-                <form action="" method="POST">
-                    <select name="category" id="">
-                        <option value="all">All</option>
-                        <option value="tipe">Tipe Budaya</option>
-                        <option value="asal">Asal Provinsi Budaya</option>
-                    </select>
-                    <input type="submit" value="Tampilkan">
-                </form>
-            </div>
+{% extends 'includes/layout.html' %}
+
+{% block content %}
+<div class="container">
+        <br>
+        <h2>Kriteria Pencarian Statistik Budaya</h2>
+        <div class="form-group row">
+            <form action="" method="POST">
+                <select class="form-control" name="category" id="">
+                    <option value="all">All</option>
+                    <option value="tipe">Tipe Budaya</option>
+                    <option value="asal">Asal Provinsi Budaya</option>
+                </select>
+                <input class="btn btn-primary" type="submit" value="Tampilkan">
+            </form>
         </div>
-    <div class="container-fluid">
-        {% if result is defined and result==False %}
-        <h4>Budaya KB memilki total {{jumlah}} data budaya </h4>
-        {%endif%}
-
-        {% if result is defined and result==True %}
-        <h4>Statistik Data Budaya berdasarkan {{tipe}}</h4>
-            <div class="table-responsive text-nowrap">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col">Kriteria</th>
-                            <th scope="col">Jumlah</th>
-                        </tr>
-                    </thead>
-                    
-                    {% for key in jumlah %}
-                    <tr>
-                        <td scope='row' align=left> {{ key }} </td>
-                        <td scope='row' align=left> {{ jumlah[key] }} </td>
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        {%endif%}
-
     </div>
-</body>
-</html>
+<div class="container-fluid">
+    {% if result is defined and result==False %}
+    <h4>Budaya KB memilki total {{jumlah}} data budaya </h4>
+    {%endif%}
+
+    {% if result is defined and result==True %}
+    <h4>Statistik Data Budaya berdasarkan {{tipe}}</h4>
+        <div class="table-responsive text-nowrap">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Kriteria</th>
+                        <th scope="col">Jumlah</th>
+                    </tr>
+                </thead>
+                
+                {% for key in jumlah %}
+                <tr>
+                    <td scope='row' align=left> {{ key }} </td>
+                    <td scope='row' align=left> {{ jumlah[key] }} </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    {%endif%}
+
+</div>
+<!-------load jQuery then Bootstrap bundle (Popper+Bootstrap)------->
+<script src="../static/js/lib/jquery-3.4.1.js"></script>
+<script src="../static/js/lib/bootstrap.bundle.js"></script>
+{% endblock %}

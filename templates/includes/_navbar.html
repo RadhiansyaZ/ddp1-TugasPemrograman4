@@ -6,91 +6,44 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="../../static/css/lib/bootstrap.css">
   <link rel="stylesheet" href="../../static/css/style.css">
-<!-----<style>
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-li {
-  float: left;
-}
-
-li a, .dropbtn {
-  display: inline-block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-  background-color: red;
-}
-
-li.dropdown {
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 1;
-}
-
-.dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #f1f1f1;}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
-</style>-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+  <script src="../../static/js/lib/jquery-3.4.1.js"></script>
+  <script src="../../static/js/lib/bootstrap.bundle.js"></script>
 </head>
 <body>
-  <div>
+  <div class="bg-primary">
       <h1 class="display-6"><center>BudayaKB Lite v2.0</center></h1>
       <h3 class="lead"><center>Sistem Manajemen Knowledge Base Budaya Indonesia</center></h3>
+      <br>
   </div>
 
   <nav class="navbar navbar-expand-sm bg-trt navbar-light shift">
     <a class="navbar-brand bold" href="/">BudayaKB Lite</a>
       <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="/"><i class="material-icons">home</i>Home</a>
           </li>
           <li class="navbar-nav">
-            <a class="nav-link" href="/imporBudaya">Impor Budaya</a>
+            <a class="nav-link" href="/imporBudaya"><i class="material-icons">import_export</i>Impor Budaya</a>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbardrop" data-toggle="dropdown">Sunting Budaya</a>
+            <a class="nav-link dropdown-toggle" href="javascript:void(0)" id="navbardrop" data-toggle="dropdown"><i class="material-icons">edit</i>Sunting Budaya</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="/tambahBudaya">Tambah Budaya</a>
-              <a class="dropdown-item" href="/ubahBudaya">Ubah Budaya</a>
-              <a class="dropdown-item" href="/hapusBudaya">Hapus Budaya</a>
+              <a class="dropdown-item" href="/tambahBudaya"><i class="material-icons">add</i>Tambah Budaya</a>
+              <a class="dropdown-item" href="/ubahBudaya"><i class="material-icons">edit_attributes</i>Ubah Budaya</a>
+              <a class="dropdown-item" href="/hapusBudaya"><i class="material-icons">delete</i>Hapus Budaya</a>
             </div>
           </li>
             <li class="navbar-nav">
-              <a class="nav-link" href="/cariBudaya">Cari Budaya</a>
+              <a class="nav-link" href="/cariBudaya"><i class="material-icons">search</i>Cari Budaya</a>
             </li>
               <li class="navbar-nav">
-                <a class="nav-link" href="/statsBudaya">Statistik Budaya</a>
+                <a class="nav-link" href="/statsBudaya"><i class="material-icons">table_chart</i>Statistik Budaya</a>
+              </li>
+              <li class="navbar-nav">
+                <a class="nav-link" href="https://github.com/RadhiansyaZ/TP3/blob/master/TP3_DDP1-G_AD_1906398300_RadhiansyaZainAntriksaPutra.py" target="_blank"><i class="material-icons">sync</i>v1.0</a>
               </li>
         </ul>
   </nav>
-<script src="../../static/js/lib/jquery-3.4.1.js"></script>
-<script src="../../static/js/lib/bootstrap.bundle.js"></script>
 </body>
 </html>

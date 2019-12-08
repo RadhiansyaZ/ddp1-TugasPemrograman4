@@ -162,6 +162,10 @@ def stat_budaya():
 			query_result=budayaData.statByProv()
 			return render_template('statsBudaya.html',result=True,jumlah=query_result, tipe="Asal Budaya")
 
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html')
+
 # run main app
 if __name__ == "__main__":
-	app.run()
+	app.run(debug=True)

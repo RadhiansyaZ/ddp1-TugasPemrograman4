@@ -1,71 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../static/css/lib/bootstrap.css">
-    <link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
-    <title>BudayaKB Lite</title>
-</head>
-<body>
-    {% include 'includes/_navbar.html' %}
+{% extends 'includes/layout.html' %}
+
+{% block content %}
     <div class="container">
-            <br>
-            <h2>Ubah Budaya</h2>
-            <p>Masukkan data budaya yang akan diubah ke dalam sistem</p><br>
-            <form action="" method="POST">
-                <div class="form-group row">
+        <br>
+        <h2>Ubah Budaya</h2>
+        <p>Masukkan data budaya yang akan diubah ke dalam sistem</p><br>
+        <form action="" method="POST">
+            <div class="form-group row">
+                <div class="col">
+                    <p>Nama: </p>
+                </div>
+                <div class="col-6">
+                    <input type="text" name="nama" id="" placeholder="Rendang" required>
+                </div>
+                <div class="col"></div>
+                <div class="col"></div>
+            </div>
+            <div class="form-group row">
                     <div class="col">
-                        <p>Nama: </p>
+                        <p>Tipe: </p>
                     </div>
                     <div class="col-6">
-                        <input type="text" name="nama" id="" required>
-                     </div>
+                        <input type="text" name="tipe" id="" placeholder="Makanan" required>
+                    </div>
                     <div class="col"></div>
                     <div class="col"></div>
-                </div>
-                <div class="form-group row">
+            </div>
+            <div class="form-group row">
+                    <div class="col">
+                        <p>Provinsi: </p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="prov" id="" placeholder="Sumatra Barat" required>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                        <p>URL referensi: </p>
+                    </div>
+                    <div class="col-6">
+                        <input type="text" name="url" id="" placeholder="http://cs.ui.ac.id/" required>
+                    </div>
+                    <div class="col"></div>
+                    <div class="col"></div>
+            </div>
+            <div class="form-group row">
+                    <div class="col"></div>
+                    <div class="col-6">
+                        <div class="col"></div>
                         <div class="col">
-                            <p>Tipe: </p>
+                            <input type="submit" value="Ubah Data">
                         </div>
-                        <div class="col-6">
-                            <input type="text" name="tipe" id="" required>
-                         </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                </div>
-                <div class="form-group row">
-                        <div class="col">
-                            <p>Provinsi: </p>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="prov" id="" required>
-                          </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                </div>
-                <div class="form-group row">
-                       <div class="col">
-                            <p>URL referensi: </p>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" name="url" id="" required>
-                         </div>
-                        <div class="col"></div>
-                        <div class="col"></div>
-                </div>
-                <div class="form-group row">
-                        <div class="col"></div>
-                        <div class="col-6">
-                            <div class="col"></div>
-                            <div class="col">
-                                <input type="submit" value="Ubah Data">
-                            </div>
-                        </div>
-                        <div class="col"></div>
-                </div>   
-            </form>
+                    </div>
+                    <div class="col"></div>
+            </div>   
+        </form>
     </div>
     <div class="container-fluid">
         {% if command is defined and command==True %}
@@ -74,5 +65,7 @@
         <h4>Budaya {{name}} tidak ditemukan</h4>
         {%endif%}
     </div>
-</body>
-</html>
+<!-------load jQuery then Bootstrap bundle (Popper+Bootstrap)------->
+<script src="../static/js/lib/jquery-3.4.1.js"></script>
+<script src="../static/js/lib/bootstrap.bundle.js"></script>
+{% endblock %}
