@@ -14,6 +14,9 @@
    
 	   {% if result is defined and result >0: %}
 	   <h3>{{ result }} data budaya telah terimpor dari file "{{ fname }}"</h3>
+	   {% elif error=='file_salah' %}
+	   <br>
+	   <h4>Ekstensi file salah! Pastikan filemu berekstensi .csv :)</h4>
 	   {% endif %}
 </div>
 <!-------load jQuery then Bootstrap bundle (Popper+Bootstrap)------->

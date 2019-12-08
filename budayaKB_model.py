@@ -7,6 +7,8 @@ Contains two classes:
 Author: Ika Alfina (ika.alfina@cs.ui.ac.id)
 
 Last update: 26 November 2019
+
+Dengan modifikasi oleh Radhiansya Zain Antriksa Putra (radhiansya.zain@ui.ac.id)
 """
 import csv
 #from pathlib import Path

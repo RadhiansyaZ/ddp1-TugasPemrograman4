@@ -23,6 +23,9 @@ app.secret_key ="tp4"
 databasefilename = ""
 budayaData = BudayaCollection()
 
+#inisialisasi custom exception oleh user
+class wrongExtension(Exception):
+	pass
 
 #merender tampilan default(index.html)
 @app.route('/',methods=['GET', 'POST'])
@@ -33,21 +36,27 @@ def index():
 # Bagian ini adalah implementasi fitur Impor Budaya, yaitu:
 # - merender tampilan saat menu Impor Budaya diklik	
 # - melakukan pemrosesan terhadap isian form setelah tombol "Import Data" diklik
-# - menampilkan notifikasi bahwa data telah berhasil diimport 	
+# - menampilkan notifikasi bahwa data telah berhasil diimport 
+# - menolak file jika bukan .csv	
 @app.route('/imporBudaya', methods=['GET', 'POST'])
 def importData():
-	if request.method == "GET":
-		return render_template("imporBudaya.html")
+	try:
+		if request.method == "GET":
+			return render_template("imporBudaya.html")
 
-	elif request.method == "POST":
-		f = request.files['file']
-		f.save(f.filename)
-		global databasefilename
-		databasefilename=f.filename
-		budayaData.importFromCSV(f.filename)
-		n_data = len(budayaData.koleksi)
-		#budayaData.exportToCSV(databasefilename)
-		return render_template("imporBudaya.html", result=n_data, fname=f.filename)
+		elif request.method == "POST":
+			f = request.files['file']
+			if f.filename.rsplit('.',1)[1] != 'csv':
+					raise wrongExtension
+			f.save(f.filename)
+			global databasefilename
+			databasefilename=f.filename
+			budayaData.importFromCSV(f.filename)
+			n_data = len(budayaData.koleksi)
+			#budayaData.exportToCSV(databasefilename)
+			return render_template("imporBudaya.html", result=n_data, fname=f.filename)
+	except wrongExtension:
+		return render_template("imporBudaya.html",error='file_salah')
 
 # Bagian ini adalah integrasi dari fitur Cari Nama, Cari Tipe, dan Cari Prov dengan nama fitur Cari Budaya
 # - Menerima isian form berdasarkan kategori yang dipilih (Nama Budaya, Tipe Budaya, atau Asal Budaya)
@@ -75,10 +84,10 @@ def find_budaya():
 			query_result.sort()
 		return render_template('cariBudaya.html',result=query_result,nama=query,search_category=query_category)
 
-#
-# - 
-# - 
-# - 
+#Bagian ini adalah implementasi fitur Tambah Budaya, yaitu:
+# - Menerima isian form berupa nama,tipe,asal,dan url budaya
+# - Melakukan pemrosesan terhadap isian, jika budaya belum ada maka akan ditambah
+# - Memberi perintah kepada html untuk memberitahu hasil pemrosesan (diterima atau tidak)
 @app.route('/tambahBudaya',methods=['GET','POST'])
 def add_budaya():
 	Nama=""
@@ -104,10 +113,10 @@ def add_budaya():
 				return render_template("tambahBudaya.html",name=Nama,command=False)
 		else:
 			return redirect("/imporBudaya")
-#
-# - 
-# - 
-# - 
+#Bagian ini adalah implementasi dari fitur Hapus Budaya, yaitu:
+# - Menerima isian form berupa nama budaya
+# - Melakukan pemrosesan berupa pencarian nama budaya
+# - Memerintahkan html untuk memberitahu hasil pemrosesan (berhasil dihapus atau tidak ada budayanya)
 @app.route('/hapusBudaya',methods=['GET','POST'])
 def del_budaya():
 	Nama=""
@@ -127,10 +136,10 @@ def del_budaya():
 				return render_template("hapusBudaya.html",name=Nama,command=False)
 		else:
 			return redirect("/imporBudaya")
-#
-# - 
-# - 
-# - 
+#Bagian ini adalah implementasi dari Update Budaya, yaitu:
+# - Menerima isian persis tambah budaya
+# - Memvalidasi apakah budaya sudah ada
+# - Mengembalikan status perubahan (berhasil diubah atau budaya tidak ditemukan)
 @app.route('/ubahBudaya',methods=['GET','POST'])
 def edit_budaya():
 	Nama=""
@@ -156,10 +165,10 @@ def edit_budaya():
 				return render_template("ubahBudaya.html",name=Nama,command=False)
 		else:
 			return redirect("/imporBudaya")
-#
-# - 
-# - 
-# - 
+#Bagian ini adalah integrasi dari fitur Stat, Stattipe, dan Statprov
+# - Stat --> Mencetak jumlah budaya yang ada
+# - StatTipe --> Mencetak berdasarkan tipe dan jumlahnya pada tabel yang dicetak
+# - StatProv --> Mencetak berdasarkan asal provinsi dan jumlahnya pada tabel yang dicetak
 @app.route('/statsBudaya',methods=['GET','POST'])
 def stat_budaya():
 	if request.method=='GET':
@@ -176,6 +185,7 @@ def stat_budaya():
 			query_result=budayaData.statByProv()
 			return render_template('statsBudaya.html',result=True,jumlah=query_result, tipe="Asal Budaya")
 
+#Bagian ini akan mengembalikan template Error '404' jika terjadi error 404
 @app.errorhandler(404)
 def page_not_found(e):
 	return render_template('404.html')
