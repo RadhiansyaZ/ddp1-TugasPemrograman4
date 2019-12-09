@@ -51,6 +51,7 @@ def importData():
 			f.save(f.filename)
 			global databasefilename
 			databasefilename=f.filename
+			budayaData.koleksi.clear()
 			budayaData.importFromCSV(f.filename)
 			n_data = len(budayaData.koleksi)
 			#budayaData.exportToCSV(databasefilename)
@@ -197,4 +198,4 @@ def page_not_found(e):
 
 # run main app
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run()
