@@ -11,7 +11,7 @@ Last update: 26 November 2019
 Dengan modifikasi oleh Radhiansya Zain Antriksa Putra (radhiansya.zain@ui.ac.id)
 """
 import csv
-#from pathlib import Path
+
 """
 class BudayaItem
 This class represents a data in BudayaKB app.
@@ -139,7 +139,16 @@ class BudayaCollection(object):
 
 		return result
 
+	def cariSemuaNama(self):
+		"""
+		Return a list contains every BudayaItem object
+		"""
+		result=list()
 
+		for item in self.koleksi.values():
+			result.append(item)
+		
+		return result
 
 	def tambah(self, aName, aTipe, aProv, anURL):
 		"""
@@ -148,7 +157,7 @@ class BudayaCollection(object):
 		return 0 otherwise, new data is not processed
 		"""
 
-		if aName.title() not in self.koleksi:
+		if aName.strip().title() not in self.koleksi:
 			newBudayaItem = BudayaItem(aName.title().strip(), aTipe.title().strip(), aProv.title().strip(), anURL.strip())
 			self.koleksi[aName.title()] = newBudayaItem
 			return 1
@@ -164,7 +173,7 @@ class BudayaCollection(object):
 		return 0 if the data does not exist
 		"""
 
-		if aName.title() in self.koleksi:
+		if aName.strip().title() in self.koleksi:
 			self.koleksi.pop(aName.title().strip())
 			return 1
 		else:
@@ -177,7 +186,7 @@ class BudayaCollection(object):
 		return 1 if the data tobe updated is in the collection and the update has been done
 		return 0 if the old data with the same key (name) does not exist
 		"""
-		if aName.title() in self.koleksi:
+		if aName.strip().title() in self.koleksi:
 			newBudayaItem = BudayaItem(aName.title().strip(), aTipe.title().strip(), aProv.title().strip(), anURL.strip())
 			self.koleksi[aName.title()] = newBudayaItem
 			return 1

@@ -70,6 +70,9 @@ def find_budaya():
 	elif request.method=='POST':
 		category=request.form['category']
 		query=request.form['budaya']
+		if query=='':
+			query_result=budayaData.cariSemuaNama()
+			query_result.sort()
 		if category=='name':
 			query_category="Nama Budaya"
 			query_result=budayaData.cariByNama(query)
