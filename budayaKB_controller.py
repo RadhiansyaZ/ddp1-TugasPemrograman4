@@ -57,6 +57,8 @@ def importData():
 			return render_template("imporBudaya.html", result=n_data, fname=f.filename)
 	except wrongExtension:
 		return render_template("imporBudaya.html",error='file_salah')
+	except PermissionError:
+		return render_template("imporBudaya.html",error='file_dibuka')
 
 # Bagian ini adalah integrasi dari fitur Cari Nama, Cari Tipe, dan Cari Prov dengan nama fitur Cari Budaya
 # - Menerima isian form berdasarkan kategori yang dipilih (Nama Budaya, Tipe Budaya, atau Asal Budaya)
