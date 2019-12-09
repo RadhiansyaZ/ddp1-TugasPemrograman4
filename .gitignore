@@ -7,3 +7,4 @@ backup_line.txt
 templates/reset.html
 templates/includes/_footer.html
 TP4-DESTROYER.csv
+*.zip
