@@ -1,1 +1,1 @@
-web: gunicorn -b:$PORT budayaKB_controller: app
+web: gunicorn budayaKB_controller: app
